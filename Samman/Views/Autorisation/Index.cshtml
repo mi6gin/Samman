@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Страница Регистрации";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Страница Регистрации</title>
+    <link rel="stylesheet" type="text/css" href="~/css/auth.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Регистрация</h1>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <form id="registerForm" method="post" asp-controller="Autorisation" asp-action="Registration">
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Пол</label>
+                    <select class="form-control" id="gender" name="gender" required>
+                        <option value="Мужчина">Мужчина</option>
+                        <option value="Женщина">Женщина</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Mail">Электронная почта</label>
+                    <input type="text" class="form-control" id="secretAnswer" name="Mail" required>
+                </div>
+            </form>
+            <a class="btn btn-primary mt-2 flash-button" style="font-family: Helvetica; width: 95%;" href="#" onclick="document.getElementById('registerForm').submit();">
+                Зарегистрироваться
+            </a>
+
+        </div>
+        <br />
+        <form method="post" asp-controller="Autorisation" asp-action="Undex">
+            <button class="btn btn-link mt-2 flash-button last" type="submit" style="font-size: 90%; background: none; border: none; cursor: pointer;">
+                Уже имеете аккаунт?
+            </button>
+        </form>
+    </div>
+</body>
+</html>
+
+

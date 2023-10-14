@@ -1,0 +1,422 @@
+﻿.light-theme {
+    /* Основные цвета */
+    --background-color: #f8f9fa;
+    --text-color: #000;
+    --button-background: #DC143C;
+    --button-text: black;
+    --button-text-hover: white;
+    --button-text-submenu: white;
+    /* Дополнительные стили для элементов */
+    --menu-background: white;
+    --menu-hover-background: #DC143C;
+    --content-background: white;
+    --content-border: #ccc;
+    --content-burder: #333;
+}
+
+/* Темная тема */
+.dark-theme {
+    --background-color: #1d1e1f;
+    --text-color: white;
+    --button-background: #444546;
+    --button-text: white;
+    --button-text-hover: white;
+    --button-text-submenu: #444546;
+    --link-color: #82d5e6;
+    /* Дополнительные стили для элементов */
+    --menu-background: #363738;
+    --menu-hover-background: #444546;
+    --content-background: #363738;
+    --content-border: #545454;
+    --content-burder: #363738;
+}
+
+/* Общие стили для всей страницы */
+html {
+    font-size: 14px;
+}
+
+/* Стили для кнопки с идентификатором "IndexButton" */
+#IndexButton {
+    background-color: var(--button-background);
+    color: var(--button-text);
+}
+
+    #IndexButton:hover {
+        background-color: var(--text-color); /* Цвет фона кнопки при наведении */
+        color: var(--button-text); /* Цвет текста кнопки при наведении */
+        transition: background-color 0.3s ease-in-out; /* Плавное изменение цвета фона */
+    }
+
+/* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (min-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+/* Общие стили для фокусированных элементов */
+.btn:focus,
+.btn:active:focus,
+.btn-link.naf-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem var(--menu-background), 0 0 0 0.25rem #258cfb;
+}
+
+/* Стили для всей страницы */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Стили для изображений на маленьких экранах (<768px) */
+@media (max-width: 767px) {
+    img {
+        max-width: 100%;
+    }
+    html {
+        font-size: 8px;
+    }
+}
+
+/* Стили для изображений на больших экранах (768px и более) */
+@media (min-width: 768px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+
+body {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow: auto;
+    padding-top: 54px;
+}
+
+/* Общие стили для всех элементов */
+* {
+    box-sizing: border-box;
+}
+
+/* Стили для фиксированного заголовка */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+/* Стили для верхнего меню */
+#top-menu {
+    background-color: var(--menu-background);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--content-border); /* Заменяем border на border-bottom */
+    height: 54px;
+    white-space: nowrap;
+}
+
+/* Стили для списка в левом меню */
+#top-left ul,
+#top-right ul {
+    list-style-type: none;
+    color: var(--button-text);
+
+}
+
+/* Стили для элементов списка в левом меню */
+#top-left li,
+#top-right li {
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+/* Стили для ссылок в левом меню */
+#top-right a,
+#top-left a {
+    display: block;
+    background-color: transparent;
+    color: var(--button-text);
+    text-align: left;
+    padding: 10px;
+    margin-top: 2px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    #top-right a:hover {
+        background-color: var(--button-background);
+        color: var(--button-text-hover);
+        transition: background-color 0.3s ease-in-out;
+    }
+
+
+/* Стили для логотипа */
+#logo {
+    display: flex;
+    align-items: center;
+    font-size: 160%;
+    font-weight: bold;
+}
+
+/* Стили для изображения в левой части верхнего меню */
+#top-left img {
+    border-radius: 35%;
+}
+
+/* Стили для bottom-menu */
+#bottom-menu {
+    display: flex;
+}
+
+
+.navbar > .container {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}
+
+@media (min-width: 100px){
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+    }
+}
+
+
+#bottom-right {
+    background-color: var(--menu-background);
+    border: 1px solid var(--content-border);
+    border-radius: 10px;
+    padding: 15px;
+    min-width: 14.9%;
+}
+
+#bottom-left {
+    min-width: 14.9%;
+    max-width: 15%;
+}
+
+@media (min-width: 100px) {
+
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 65%;
+        display: flex;
+        justify-content: center;
+    }
+
+
+}
+    /* Стили для списка в левом и правом меню */
+    #bottom-left ul,
+    #bottom-right ul {
+        color: var(--button-text);
+    }
+
+    /* Стили для элементов списка в левом и правом меню */
+    #bottom-left li,
+    #bottom-right li {
+        margin-bottom: 2px;
+    }
+
+    /* Стили для ссылок в левом и правом меню */
+    #bottom-right a,
+    #bottom-left a {
+        display: block;
+        background-color: transparent;
+        color: var(--button-text);
+        text-align: left;
+        padding: 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        #bottom-right a:hover,
+        #bottom-left a:hover {
+            background-color: var(--button-background);
+            color: var(--button-text-hover);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+/* Стили для центрального меню */
+#bottom-center {
+    background-color: var(--menu-background);
+    display: flex;
+    border: 1px solid var(--content-border);
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--button-text);
+    min-height: 100px;
+    min-width: 69.9%;
+    max-width: 70%;
+    text-align: center;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+    #bottom-center img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border: 2px solid var(--content-border);
+        margin-bottom: 10px;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    #bottom-center p {
+        font-family: Helvetica;
+        margin-top: 10px;
+        text-align: left;
+        max-width: 100%;
+    }
+
+    #bottom-center .image-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+        #bottom-center .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            position: relative;
+            flex: 1;
+            margin: 2px;
+        }
+
+            #bottom-center .image-container img:only-child {
+                flex: 2;
+                max-width: 100%;
+            }
+
+
+
+
+/* Стили для переключателя "toggle" */
+.toggle {
+    display: none;
+}
+
+/* Стили для подменю */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: var(--button-text-submenu);
+    border: 1px solid var(--content-border);
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    list-style-type: none;
+}
+
+/* Показываем подменю, когда чекбокс "Настройки" активен */
+#settingsToggle:checked + .submenu {
+    display: block;
+}
+
+/* Стилизация подменю */
+.submenu li {
+    list-style-type: none;
+}
+
+/* Добавьте другие стили, как вам нужно */
+
+
+/* Показываем подменю при наведении на элемент "nav-item" */
+.nav-item:hover .submenu {
+    display: block;
+}
+
+/* Стили для элементов в подменю */
+.submenu li {
+    padding: 10px;
+    border-bottom: 1px solid var(--content-border);
+    list-style: none;
+}
+
+    /* Стили для последнего элемента в подменю */
+    .submenu li:last-child {
+        border-bottom: none;
+    }
+
+/* Стили для ссылок в подменю */
+.submenu a {
+    color: var(--content-burder);
+    text-decoration: none;
+}
+
+/* Показываем подменю при активации переключателя "settingsToggle" */
+#settingsToggle:checked + .submenu {
+    display: block;
+}
+
+#themeButton {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue; /* Цвет ссылки можно изменить на тот, который вам нравится */
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    border-radius: 5px;
+    text-decoration: none;
+}
+    .nav-link:hover {
+        color: var(--button-text-hover);
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: var(--button-background);
+    }
+
+
+.service-button a {
+    display: block;
+    background-color: transparent;
+    color: var(--text-color);
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    .service-button a:hover {
+        background-color: var(--button-background);
+        color: var(--button-text-hover);
+        transition: background-color 0.3s ease-in-out;
+    }
+
+#content-window    {
+    display: flex;
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--button-text);
+    min-height: 100px;
+    min-width: 74%;
+    max-width: 75%;
+    text-align: center;
+    margin-bottom: 10px;
+    flex-direction: column;
+}

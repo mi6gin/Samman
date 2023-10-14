@@ -1,0 +1,224 @@
+﻿.light-theme {
+    /* Основные цвета */
+    --background-color: #f8f9fa;
+    --text-color: #000;
+    --button-background: #DC143C;
+    --button-text: black;
+    --button-text-hover: white;
+    --button-text-submenu: white;
+    /* Дополнительные стили для элементов */
+    --menu-background: white;
+    --menu-hover-background: #DC143C;
+    --content-background: white;
+    --content-border: #ccc;
+    --content-burder: #333;
+}
+
+/* Темная тема */
+.dark-theme {
+    --background-color: #1d1e1f;
+    --text-color: white;
+    --button-background: #444546;
+    --button-text: white;
+    --button-text-hover: white;
+    --button-text-submenu: #444546;
+    --link-color: #82d5e6;
+    /* Дополнительные стили для элементов */
+    --menu-background: #363738;
+    --menu-hover-background: #444546;
+    --content-background: #363738;
+    --content-border: #545454;
+    --content-burder: #363738;
+}
+
+.list-row {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* CSS для позиции в списке */
+.list-item {
+    flex: 1;
+    display: flex;
+}
+
+#content-window {
+    display: flex;
+    border-radius: 10px;
+    padding: 15px;
+    color: var(--button-text);
+    min-height: 100px;
+    min-width: 74%;
+    max-width: 75%;
+    text-align: center;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+.text-elements {
+    text-align: justify;
+    font-size: 14px;
+}
+.loading-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 9999;
+}
+
+.loading-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* CSS для изображения в позиции */
+.list-item .item-image img {
+    max-width: 100px;
+    max-height: 150px;
+    margin-bottom: 10px;
+}
+
+.image-container {
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+/* Стиль для текста внутри span */
+span.custom-text {
+    font-weight: bold;
+    font-size: 10px;
+    white-space: normal;
+    text-align: left;
+}
+
+/* Стиль для текста с ошибкой */
+span.text-danger {
+    color: red;
+}
+
+
+/* CSS для контейнера ряда */
+.list-row {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+/* CSS для позиции в списке */
+.list-item {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Выравнивание элементов по вертикали */
+}
+
+    /* CSS для изображения в позиции */
+    .list-item .item-image img {
+        max-width: 100px;
+        max-height: 150px;
+        margin-right: 10px; /* Добавляем небольшой отступ справа от изображения */
+    }
+
+/* Стиль для текста внутри span */
+span.custom-text {
+    font-weight: bold;
+    font-size: 10px;
+    white-space: normal;
+    text-align: left;
+}
+
+/* Стиль для текста с ошибкой */
+span.text-danger {
+    color: red;
+}
+
+/* CSS for the list item container */
+.list-item {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Center vertically */
+}
+
+    /* CSS for the image container */
+    .list-item .item-image {
+        max-width: 100px;
+        max-height: 150px;
+        margin-right: 10px; /* Add margin to separate image and text */
+    }
+
+    /* CSS for the text content */
+    .list-item .item-text {
+        flex-grow: 1; /* Allow the text to grow and take available space */
+    }
+
+        /* Optionally, you can adjust the text styles */
+        .list-item .item-text a.navbar-brand {
+            font-weight: bold;
+            font-size: 16px; /* Adjust the font size as needed */
+            text-decoration: none; /* Remove underlines from links */
+        }
+
+        .list-item .item-text p {
+            font-size: 14px; /* Adjust the font size as needed */
+            margin: 0; /* Remove default margin for paragraphs */
+        }
+
+/* CSS for the content of each item */
+.item-content {
+    display: flex; /* Add this line to make children display horizontally */
+    align-items: center; /* Vertically align the children to the center */
+}
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+    .nav-link:hover {
+        color: var(--button-text-hover);
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: var(--button-background);
+    }
+
+a {
+    color: var(--text-color);
+}
+
+/* CSS for the image container */
+.item-image {
+    flex: 0 0 auto; /* Don't allow the image to grow or shrink */
+    margin-right: 10px; /* Add some spacing between the image and text */
+}
+
+/* CSS for the text content */
+.item-text {
+    flex: 1; /* Allow the text to grow and take up available space */
+}
+
+.navbar > .container {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}

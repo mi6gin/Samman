@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Страница входа";
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Страница Регистрации</title>
+    <link rel="stylesheet" type="text/css" href="~/css/auth.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Вход</h1>
+        <div class="d-flex flex-column align-items-center justify-content-center">
+            <form id="loginForm" asp-controller="Autorisation" asp-action="Login" method="post">
+                <div class="form-group">
+                    <label for="username">Имя пользователя</label>
+                    <input type="text" class="form-control" id="username" name="Username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" class="form-control" id="password" name="Password" required>
+                </div>
+            </form>
+            <a class="btn btn-primary mt-2 flash-button" style="font-family: Helvetica; width: 95%;" href="#" onclick="document.getElementById('loginForm').submit();">
+                Войти
+            </a>
+        </div>
+        <br />
+        <form method="post" asp-controller="Home" asp-action="ForgotPasswordStep2">
+            <button class="btn btn-link mt-2 flash-button last" type="submit" style="font-size: 90%; background: none; border: none; cursor: pointer;">
+                Забыли пароль?
+            </button>
+        </form>
+    </div>
+</body>
+</html>

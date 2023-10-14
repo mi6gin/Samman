@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Manchkin</title>
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Manchkin.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <style>
+        ul.navbar-nav.ml-auto li {
+            display: inline-block; /* Добавляем этот стиль */
+            margin-right: 20px; /* Для создания отступа между элементами (на ваше усмотрение) */
+        }
+
+    </style>
+    <header>
+        <nav id="top-menu" class="navbar navbar-expand-lg ">
+            <div class="container">
+                <!-- Левая часть шапки с логотипом и названием сайта -->
+                <div id="top-left" class="d-flex align-items-center">
+                   <img src="/content/img/logotype.png" alt="Logo" class="mr-2" style="width: 30px; height: 30px; border-radius: 30%; margin-right: -5px;">
+                    <a class="navbar-brand" href="/Home/Index">
+                        <span style="font-weight: bold;">Самман</span>
+                    </a>
+                </div>
+
+                <!-- Правая часть шапки с кнопкой "Настройки" и "Войти в аккаунт" -->
+                <div id="top-right" class="d-flex align-items-center">
+                    <button class="navbar-toggler" type="button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div id="navbarNav">
+                        <ul class="navbar-nav ml-auto d-flex align-items-center">
+                            <li class="nav-item">
+                                <!-- Кнопка "Настройки" -->
+                                <input type="checkbox" id="settingsToggle" class="toggle">
+                                <label class="nav-link" for="settingsToggle">
+                                    <i class="fas fa-cog"></i> Настройки
+                                </label>
+                                <!-- Подменю для настроек -->
+                                <ul class="submenu">
+                                    <li>🎨 Тема: <button id="themeButton" onclick="toggleTheme()">Изменить</button></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <!-- Кнопка "Войти в аккаунт" -->
+                                <a class="nav-link" href="/Index">
+                                    <i class="fas fa-user"></i> цуцуцуцу
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <footer>
+        <nav id="bottom-menu" class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Левая часть футера с логотипом и названием сайта -->
+                <div id="bottom-left" class="d-flex align-items-center">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/FooterItem1"><span class="fas fa-user"></span> Моя страница</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/FooterItem1"><span class="fas fa-star"></span> Новости</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Service"><span class="fas fa-bookmark"></span> Сервисы</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Основная контентная часть футера -->
+                <div class="col-md-6">
+                    @RenderBody()
+                </div>
+
+                <!-- Правая часть футера с кнопкой "Настройки" и "Войти в аккаунт" -->
+                <div id="bottom-right">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNav" aria-controls="footerNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div id="footerNav">
+                        <ul class="list-unstyled">
+                            <li><a href="#">Манчкин</a></li>
+                            <li><a href="#">Друзья</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </footer>
+
+
+
+    <!-- Подключение скриптов -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

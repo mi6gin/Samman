@@ -1,0 +1,206 @@
+﻿@model IEnumerable<Samman.Models.DocFile>
+
+@{
+    ViewData["Title"] = "Электронный архив";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/archiv.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Manchkin.styles.css" asp-append-version="true" />
+
+    <!-- Добавление стилей для анимации загрузки -->
+    <style>
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
+        }
+
+        .loading-animation {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #f3f3f3;
+            border-top: 10px solid #3498db;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+        }
+
+        /* Скроем контент страницы при загрузке */
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="content-archiv">
+   <div id="content-window">
+
+        <!-- Загрузочный контейнер -->
+    <div id="loading-container" class="loading-container">
+        <div class="loading-animation"></div>
+    </div>
+
+    <div style="display: none;" id="content">
+        <div class="text-center">
+    <h1>Архив электронных проектных документов</h1>
+    <br />
+    <h1 class="text-elements">
+        Этот архив - ключ к миру исключительной организации и эффективности в проектной работе. Внимательно хранимые здесь электронные проектные документы - это не просто файлы, это капитал знаний и опыта нашей команды. Здесь мы собрали лучшие идеи, творческие находки и трудные уроки, которые помогут нам двигаться вперед, достигая новых высот в наших проектах. Пусть этот архив станет нашим верным компаньоном в стремлении к новым вершинам достижений.
+    </h1>
+</div>
+
+<div class="container">
+    <form method="get" action="">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="search" placeholder="Поиск по имени файла" value="@Context.Request.Query["search"].ToString()">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" name="filterYear" placeholder="Фильтр по году" value="@Context.Request.Query["filterYear"].ToString()">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="searchCategory" placeholder="Поиск по категории" value="@Context.Request.Query["searchCategory"].ToString()">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Применить</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="list-container">
+    @{
+        var searchQuery = Context.Request.Query["search"].ToString();
+        var docNameDbContext = new Samman.DataBase.DocNamesDbContext();
+        var docFileDbContext = new Samman.DataBase.DocFileDbContext();
+        var searchCategoryQuery = Context.Request.Query["searchCategory"].ToString();
+        var filterYear = Context.Request.Query["filterYear"].ToString();
+
+        var matchingArchiveItems = docNameDbContext.DocNames.AsQueryable();
+
+        if (!string.IsNullOrEmpty(searchQuery))
+        {
+            matchingArchiveItems = matchingArchiveItems.Where(ai => ai.DocFileTruename.Contains(searchQuery));
+        }
+
+        if (!string.IsNullOrEmpty(searchCategoryQuery))
+        {
+            matchingArchiveItems = matchingArchiveItems.Where(ai => ai.Category.Contains(searchCategoryQuery));
+        }
+
+        if (!string.IsNullOrEmpty(filterYear) && int.TryParse(filterYear, out var year))
+        {
+            matchingArchiveItems = matchingArchiveItems.Where(ai =>
+                (ai.DocFile != null && ai.DocFile.DateCreated.Year == year)
+                || (ai.DocFile == null && docFileDbContext.DocFile.Any(pf => pf.FileName == ai.DocFilename && pf.DateCreated.Year == year)));
+        }
+
+        var filteredArchiveItems = matchingArchiveItems.ToList();
+    }
+
+    @for (int i = 0; i < filteredArchiveItems.Count; i++)
+    {
+        // Открываем контейнер для элемента
+        @:<div class="list-row">
+
+        <div class="list-item">
+            @{
+                byte[] pngData = null;
+                if (filteredArchiveItems[i].DocFile != null && filteredArchiveItems[i].DocFile.FileContentPNG != null)
+                {
+                    pngData = filteredArchiveItems[i].DocFile.FileContentPNG;
+                }
+                else if (!string.IsNullOrEmpty(filteredArchiveItems[i].DocFilename))
+                {
+                    var pdfile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.FileName == filteredArchiveItems[i].DocFilename);
+                    if (pdfile != null)
+                    {
+                        pngData = pdfile.FileContentPNG;
+                    }
+                }
+            }
+
+            <div class="item-content">
+                <div class="item-image">
+                    @if (pngData != null)
+                    {
+                        <img src="data:image/png;base64,@Convert.ToBase64String(pngData)" alt="Изображение" width="100" height="150">
+                    }
+                </div>
+
+                <div class="item-text">
+                    <a class="navbar-brand" href="/Home/Index">
+                        <span class="custom-text">@filteredArchiveItems[i].DocFileTruename</span>
+                    </a>
+                    <p>
+                        @{
+                            if (filteredArchiveItems[i].DocFile != null)
+                            {
+                                @filteredArchiveItems[i].DocFile.DateCreated.ToString("dd.MM.yyyy")
+                            }
+                            else if (!string.IsNullOrEmpty(filteredArchiveItems[i].DocFilename))
+                            {
+                                var pdfile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.FileName == filteredArchiveItems[i].DocFilename);
+                                if (pdfile != null)
+                                {
+                                    @pdfile.DateCreated.ToString("dd.MM.yyyy")
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Дата не доступна</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="text-danger">Дата не доступна</span>
+                            }
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        // Закрываем контейнер для элемента
+        @:</div>
+    }
+</div>
+    </div>
+
+   </div>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+        $(document).ready(function () {
+            // Симуляция задержки (замените на реальное время загрузки данных)
+            setTimeout(function () {
+                // Скрыть загрузочный контейнер и показать контент
+                $('#loading-container').fadeOut(function () {
+                    $('#content').fadeIn();
+                    // Восстановить прокрутку
+                    $('body').css('overflow', 'auto');
+                });
+            }, 3000); // Замените на реальное время загрузки данных
+        });
+    </script>
