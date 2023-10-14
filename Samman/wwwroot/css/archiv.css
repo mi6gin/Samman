@@ -1,4 +1,18 @@
-﻿
+﻿.light-theme {
+    /* Основные цвета */
+    --background-color: #f8f9fa;
+    --text-color: #000;
+    --button-background: #DC143C;
+    --button-text: black;
+    --button-text-hover: white;
+    --button-text-submenu: white;
+    /* Дополнительные стили для элементов */
+    --menu-background: white;
+    --menu-hover-background: #DC143C;
+    --content-background: white;
+    --content-border: #ccc;
+    --content-burder: #333;
+}
 
 /* Темная тема */
 .dark-theme {
