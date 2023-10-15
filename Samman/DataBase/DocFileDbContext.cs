@@ -25,7 +25,10 @@ namespace Samman.DataBase
 
         public void InitializeDatabase()
         {
-            string pdfFolderPath = "\\Users\\Marx\\Desktop\\Pdf";
+            string currentDirectory = Directory.GetCurrentDirectory();
+            string docFolderPath = Path.Combine(currentDirectory, "wwwroot/content/doc");
+            string pdfFolderPath = docFolderPath;
+
 
             if (Database.EnsureCreated())
             {

@@ -10,5 +10,10 @@ namespace Samman.Controllers
             return View();
         }
 
+        public IActionResult ArchAdm()
+        {
+            return View();
+        }
+
     }
 }

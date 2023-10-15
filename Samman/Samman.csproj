@@ -15,6 +15,14 @@
 
   <ItemGroup>
     <Folder Include="DataBase\Base\" />
+    <Folder Include="wwwroot\content\doc\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\content\doc\ASCII1 — копия %282%29.doc" />
+    <None Include="wwwroot\content\doc\ASCII1 — копия %282%29.jpg" />
+    <None Include="wwwroot\content\doc\ASCII1 — копия %282%29.pdf" />
+    <None Include="wwwroot\content\doc\ASCII1 — копия %282%29.png" />
   </ItemGroup>
 
 </Project>
