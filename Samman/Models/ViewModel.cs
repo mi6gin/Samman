@@ -65,17 +65,16 @@ namespace Samman.Models
         public DocFile DocFile { get; set; }
     }
 
-    public class PdfFileViewModel
+    public class DocFileViewModel
     {
-        [Required(ErrorMessage = "Поле 'Название документа' обязательно для заполнения.")]
         public string DocFileName { get; set; }
 
-        [Required(ErrorMessage = "Необходимо выбрать PDF-файл.")]
-        [Display(Name = "PDF-файл")]
-        public IFormFile DocFile { get; set; }
+        public IFormFile? PdfFile { get; set; }
+        public IFormFile? DocFile { get; set; }
+        public IFormFile? JpgFile { get; set; }
+        public IFormFile? PngFile { get; set; }
 
-        [Required(ErrorMessage = "Выберите категорию.")]
-        [Display(Name = "Категория")]
+
         public List<string> Categores { get; set; }
 
         public DateTime DateCreate { get; set; }

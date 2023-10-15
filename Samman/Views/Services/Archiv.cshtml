@@ -86,7 +86,7 @@
             </div>
             <div class="col-md-3">
                 <div class="input-group-append">
-                    <a class="btn btn-primary" href="/Sevices/ArchAdm" type="submit">Изменить</a>
+                    <a class="btn btn-primary" href="/Services/ArchAdm" type="submit">Изменить</a>
                 </div>
             </div>
         </div>
@@ -154,9 +154,22 @@
                 </div>
 
                 <div class="item-text">
-                    <a class="navbar-brand" href="/Home/Index">
-                        <span class="custom-text">@filteredArchiveItems[i].DocFileTruename</span>
-                    </a>
+
+                    @{
+                       var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.FileName == filteredArchiveItems[i].DocFilename);
+                       if (docFile != null)
+                       {
+                           <a class="navbar-brand" href="@Url.Action("ArchViewer", "Services", new { id = docFile.Id })" target="_blank">
+                            <span class="custom-text">@filteredArchiveItems[i].DocFileTruename</span>
+                           </a>
+                       }
+                       else
+                       {
+                           <span class="text-danger">PDF-файл не найден</span>
+                       }
+                                            
+                     }
+
                     <p>
                         @{
                             if (filteredArchiveItems[i].DocFile != null)
