@@ -1,20 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Samman.DataBase;
 using Samman.Models;
 using System.Net.Mime;
 
 namespace Samman.Controllers
 {
-    public class ServicesController : Controller
+    public class ArchivController: Controller
     {
-
-        public IActionResult Archiv()
-        {
-            return View();
-        }
-
         public IActionResult ArchAdm()
         {
             return View();
@@ -62,8 +54,8 @@ namespace Samman.Controllers
             {
                 try
                 {
-                    using (var _docFileDbContext = new DocFileDbContext()) 
-                    using (var _docNameDbContext = new DocNamesDbContext()) 
+                    using (var _docFileDbContext = new DocFileDbContext())
+                    using (var _docNameDbContext = new DocNamesDbContext())
                     {
                         string docFileName = model.DocFileName;
                         byte[] docFileBytesPdf;
