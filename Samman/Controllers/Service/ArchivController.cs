@@ -5,7 +5,7 @@ using System.Net.Mime;
 
 namespace Samman.Controllers
 {
-    public class ArchivController: Controller
+    public class ArchivController : Controller
     {
         public IActionResult ArchAdm()
         {
@@ -19,7 +19,7 @@ namespace Samman.Controllers
         }
         public IActionResult ArchViewer(int id)
         {
-            var docFileDbContext = new Samman.DataBase.DocFileDbContext();
+            var docFileDbContext = new DocFileDbContext();
 
             var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
             if (docFile != null)
@@ -34,7 +34,7 @@ namespace Samman.Controllers
 
         public IActionResult ArchChange(int id)
         {
-            var docFileDbContext = new Samman.DataBase.DocFileDbContext();
+            var docFileDbContext = new DocFileDbContext();
 
             var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
             if (docFile != null)
@@ -115,7 +115,7 @@ namespace Samman.Controllers
 
                         _docNameDbContext.SaveChanges();
 
-                        return RedirectToAction("ArchAdm", "Services");
+                        return RedirectToAction("ArchAdm", "Archiv");
                     }
                 }
                 catch (Exception ex)
@@ -149,7 +149,7 @@ namespace Samman.Controllers
         [HttpGet]
         public IActionResult Pdf(int id)
         {
-            var docFileDbContext = new Samman.DataBase.DocFileDbContext();
+            var docFileDbContext = new DocFileDbContext();
 
             var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
 
@@ -173,7 +173,7 @@ namespace Samman.Controllers
         [HttpGet]
         public IActionResult Doc(int id)
         {
-            var docFileDbContext = new Samman.DataBase.DocFileDbContext();
+            var docFileDbContext = new DocFileDbContext();
 
             var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
 
@@ -197,7 +197,7 @@ namespace Samman.Controllers
         [HttpGet]
         public IActionResult Jpg(int id)
         {
-            var docFileDbContext = new Samman.DataBase.DocFileDbContext();
+            var docFileDbContext = new DocFileDbContext();
 
             var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
 
@@ -221,7 +221,7 @@ namespace Samman.Controllers
         [HttpGet]
         public IActionResult Png(int id)
         {
-            var docFileDbContext = new Samman.DataBase.DocFileDbContext();
+            var docFileDbContext = new DocFileDbContext();
 
             var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
 
