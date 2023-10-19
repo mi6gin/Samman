@@ -16,53 +16,28 @@ namespace Samman.Controllers
         private const string JpgMimeType = "image/jpeg";
         private const string PngMimeType = "image/png";
 
-        public IActionResult ArchAdm()
-        {
-            return View();
-        }
+        public IActionResult ArchAdm() => View();
 
-        public IActionResult ArchDown()
-        {
-            var model = new DocFileViewModel();
-            return View(model);
-        }
+        public IActionResult ArchDown() => View(new DocFileViewModel());
 
         public IActionResult ArchViewer(int id)
         {
-            var docFileDbContext = new DocFileDbContext();
-            var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
-
-            if (docFile != null)
-            {
-                return View(docFile);
-            }
-            else
-            {
-                return NotFound();
-            }
+            var docFile = new DocFileDbContext().DocFile.FirstOrDefault(pf => pf.Id == id);
+            return docFile != null ? View(docFile) : NotFound();
         }
 
         public IActionResult ArchChange(int id)
         {
-            var docFileDbContext = new DocFileDbContext();
-            var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
-
+            var docFile = new DocFileDbContext().DocFile.FirstOrDefault(pf => pf.Id == id);
             if (docFile != null)
             {
                 TempData["Id"] = docFile.Id;
                 return View(docFile);
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
 
-        public IActionResult ArchRebuild()
-        {
-            var model = new DocFileViewModel();
-            return View(model);
-        }
+        public IActionResult ArchRebuild() => View(new DocFileViewModel());
 
         [HttpPost]
         public IActionResult ArchAdd(DocFileViewModel model)
@@ -74,7 +49,7 @@ namespace Samman.Controllers
                     using (var _docFileDbContext = new DocFileDbContext())
                     using (var _docNameDbContext = new DocNamesDbContext())
                     {
-                        string docFileName = model.DocFileName;
+                        var docFileName = model.DocFileName;
                         byte[] docFileBytesPdf;
                         byte[] docFileBytesDoc;
                         byte[] docFileBytesJpg;
@@ -136,7 +111,6 @@ namespace Samman.Controllers
                     ModelState.AddModelError(string.Empty, "Произошла ошибка при сохранении данных: " + ex.Message);
                 }
             }
-
             return View(model);
         }
 
@@ -151,7 +125,7 @@ namespace Samman.Controllers
                     using (var _docFileDbContext = new DocFileDbContext())
                     using (var _docNameDbContext = new DocNamesDbContext())
                     {
-                        string docFileName = model.DocFileName;
+                        var docFileName = model.DocFileName;
                         byte[] docFileBytesPdf;
                         byte[] docFileBytesDoc;
                         byte[] docFileBytesJpg;
@@ -214,7 +188,6 @@ namespace Samman.Controllers
                                 _docNameDbContext.SaveChanges();
                             }
                         }
-                        
                         return RedirectToAction("Archiv", "Service");
                     }
                 }
@@ -223,7 +196,6 @@ namespace Samman.Controllers
                     ModelState.AddModelError(string.Empty, "Произошла ошибка при сохранении данных: " + ex.Message);
                 }
             }
-
             return RedirectToAction("ArchAdm", "Archiv");
         }
 
@@ -232,105 +204,48 @@ namespace Samman.Controllers
             using (var docFileDbContext = new DocFileDbContext())
             {
                 var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
-
                 if (docFile != null)
                 {
                     docFileDbContext.DocFile.Remove(docFile);
                     docFileDbContext.SaveChanges();
-
                     return RedirectToAction("Index", "Home");
                 }
-
                 return RedirectToAction("Index", "Home");
             }
         }
 
         [HttpGet]
-        public IActionResult Pdf(int id)
-        {
-            var docFileDbContext = new DocFileDbContext();
-            var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
-
-            if (docFile != null)
-            {
-                Response.Headers.Add("Content-Disposition", new ContentDisposition
-                {
-                    Inline = true,
-                    FileName = docFile.FileName + ".pdf"
-                }.ToString());
-
-                return File(docFile.FileContentPDF, PdfMimeType);
-            }
-            else
-            {
-                return RedirectToAction("Error", "Home");
-            }
-        }
+        public IActionResult Pdf(int id) => GetFileResult(id, PdfMimeType, ".pdf");
 
         [HttpGet]
-        public IActionResult Doc(int id)
-        {
-            var docFileDbContext = new DocFileDbContext();
-            var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
-
-            if (docFile != null)
-            {
-                Response.Headers.Add("Content-Disposition", new ContentDisposition
-                {
-                    Inline = true,
-                    FileName = docFile.FileName + ".doc"
-                }.ToString());
-
-                return File(docFile.FileContentDOC, DocMimeType);
-            }
-            else
-            {
-                return RedirectToAction("Error", "Home");
-            }
-        }
+        public IActionResult Docx(int id) => GetFileResult(id, DocMimeType, ".docx");
 
         [HttpGet]
-        public IActionResult Jpg(int id)
-        {
-            var docFileDbContext = new DocFileDbContext();
-            var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
-
-            if (docFile != null)
-            {
-                Response.Headers.Add("Content-Disposition", new ContentDisposition
-                {
-                    Inline = true,
-                    FileName = docFile.FileName + ".jpg"
-                }.ToString());
-
-                return File(docFile.FileContentJPG, JpgMimeType);
-            }
-            else
-            {
-                return RedirectToAction("Error", "Home");
-            }
-        }
+        public IActionResult Jpg(int id) => GetFileResult(id, JpgMimeType, ".jpg");
 
         [HttpGet]
-        public IActionResult Png(int id)
-        {
-            var docFileDbContext = new DocFileDbContext();
-            var docFile = docFileDbContext.DocFile.FirstOrDefault(pf => pf.Id == id);
+        public IActionResult Png(int id) => GetFileResult(id, PngMimeType, ".png");
 
+        private IActionResult GetFileResult(int id, string mimeType, string fileExtension)
+        {
+            var docFile = new DocFileDbContext().DocFile.FirstOrDefault(pf => pf.Id == id);
             if (docFile != null)
             {
                 Response.Headers.Add("Content-Disposition", new ContentDisposition
                 {
                     Inline = true,
-                    FileName = docFile.FileName + ".png"
+                    FileName = docFile.FileName + fileExtension
                 }.ToString());
-
-                return File(docFile.FileContentPNG, PngMimeType);
+                return File(mimeType switch
+                {
+                    PdfMimeType => docFile.FileContentPDF,
+                    DocMimeType => docFile.FileContentDOC,
+                    JpgMimeType => docFile.FileContentJPG,
+                    PngMimeType => docFile.FileContentPNG,
+                    _ => throw new InvalidOperationException("Unsupported MIME type")
+                }, mimeType);
             }
-            else
-            {
-                return RedirectToAction("Error", "Home");
-            }
+            return RedirectToAction("Error", "Home");
         }
     }
 }
