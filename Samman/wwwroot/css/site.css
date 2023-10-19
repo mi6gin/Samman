@@ -435,6 +435,8 @@ header {
     text-decoration: none;
     border-radius: 5px;
     margin: 5px;
+    width: 150px;
+    height: 70px;
     text-align: center;
     transition: background-color 0.3s ease;
 }

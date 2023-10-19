@@ -62,11 +62,12 @@ namespace Samman.Models
         public string Category { get; set; }
 
         // Навигационное свойство для связи с PdfFile
-        public DocFile DocFile { get; set; }
+        public DocFile? DocFile { get; set; }
     }
 
     public class DocFileViewModel
     {
+        public int Id { get; set; }
         public string DocFileName { get; set; }
 
         public IFormFile? PdfFile { get; set; }
