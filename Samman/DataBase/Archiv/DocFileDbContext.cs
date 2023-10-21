@@ -15,7 +15,7 @@ namespace Samman.DataBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Database/Base/pdf.db");
+            optionsBuilder.UseSqlite("Data Source=Database/Base/docFiles.db");
         }
 
         public DocFileDbContext()
@@ -42,8 +42,8 @@ namespace Samman.DataBase
                     {
                         string fileName = Path.GetFileNameWithoutExtension(filePath);
 
-                        var startDate = new DateTime(2000, 1, 1);
-                        var endDate = new DateTime(2022, 12, 31);
+                        var startDate = new DateTime(1917, 1, 1);
+                        var endDate = new DateTime(2023, 12, 31);
                         var randomDate = startDate.AddDays(random.Next((endDate - startDate).Days));
 
                         if (fileFormats.ContainsKey(fileName))

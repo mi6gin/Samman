@@ -16,7 +16,7 @@ namespace Samman.DataBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Database/Base/file2.db");
+            optionsBuilder.UseSqlite("Data Source=Database/Base/docNames.db");
         }
 
         public DocNamesDbContext()

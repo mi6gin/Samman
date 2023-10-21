@@ -1,12 +1,24 @@
-﻿.light-theme {
-    /* Основные цвета */
+﻿/* Определение CSS переменных */
+:root {
+    /*Определение для центральных нижних меню*/
+    --margin-top-bottMenu: 100%;
+    --width-col-6: 45%;
+    --margin-right-bottCenter: 5%;
+    --margin-right-bottLeft: 5%;
+    --width-bottRight: 25%;
+    --height-bottRight: 5%;
+    --padding-custom: 15px;
+    --margin-top-bottom-ul: 0px;
+    --padding-bottCenter:15px;
+}
+    /* Основные стили для светлой темы */
+    .light-theme {
     --background-color: #f8f9fa;
     --text-color: #000;
     --button-background: #DC143C;
     --button-text: black;
     --button-text-hover: white;
     --button-text-submenu: white;
-    /* Дополнительные стили для элементов */
     --menu-background: white;
     --menu-hover-background: #DC143C;
     --content-background: white;
@@ -14,7 +26,7 @@
     --content-burder: #333;
 }
 
-/* Темная тема */
+/* Темные стили */
 .dark-theme {
     --background-color: #1d1e1f;
     --text-color: white;
@@ -23,7 +35,6 @@
     --button-text-hover: white;
     --button-text-submenu: #444546;
     --link-color: #82d5e6;
-    /* Дополнительные стили для элементов */
     --menu-background: #363738;
     --menu-hover-background: #444546;
     --content-background: #363738;
@@ -43,17 +54,126 @@ html {
 }
 
     #IndexButton:hover {
-        background-color: var(--text-color); /* Цвет фона кнопки при наведении */
-        color: var(--button-text); /* Цвет текста кнопки при наведении */
-        transition: background-color 0.3s ease-in-out; /* Плавное изменение цвета фона */
+        background-color: var(--text-color);
+        color: var(--button-text);
+        transition: background-color 0.3s ease-in-out;
     }
 
+
+
 /* Медиа-запрос для увеличения размера шрифта на больших экранах */
-@media (min-width: 768px) {
+@media (max-width: 1000px) {
     html {
-        font-size: 14px;
+        font-size: 100%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    img {
+        max-width: 100%;
+        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
+    }
+
+    :root {
+        /*Определение для центральных нижних меню*/
+        --margin-top-bottMenu: 1%;
+        --margin-top-bottom-ul: -50px;
+
     }
 }
+@media (min-width: 768px) {
+    html {
+        font-size: 100%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    img {
+        max-width: 100%;
+        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
+    }
+    :root {
+        /*Определение для центральных нижних меню*/
+        --margin-top-bottMenu: 1%;
+    }
+}
+@media (max-width: 767px) {
+    html {
+        font-size: 25%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    img {
+        max-width: 100%;
+        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
+    }
+    :root {
+        /*Определение для центральных нижних меню*/
+        --margin-top-bottMenu: -3%;
+        --width-col-6: 30%;
+        --margin-right-bottCenter: 2%;
+        --margin-right-bottLeft: 1%;
+        --width-bottRight: 15%;
+        --padding-custom: 2px;
+        --margin-top-bottom-ul: -10px;
+        --padding-bottCenter: 10px;
+    }
+
+}
+
+/* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 600px) {
+    html {
+        font-size: 12%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    img {
+        max-width: 100%;
+        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
+
+    }
+    :root {
+        /*Определение для центральных нижних меню*/
+        --margin-top-bottMenu: -5%;
+        --width-col-6: 10%;
+        --margin-top-bottom-ul: -10px;
+        --width-bottRight: 9%;
+        --padding-bottCenter: 5px;
+    }
+}
+
+/* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 200px) {
+    html {
+        font-size: 6%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    img {
+        max-width: 100%;
+        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
+    }
+
+    :root {
+        /*Определение для центральных нижних меню*/
+        --margin-top-bottMenu: -10%;
+        --width-col-6: 20%;
+    }
+}
+
+
+.col-md-6 {
+    width: var(--width-col-6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar > .container {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
 
 /* Общие стили для фокусированных элементов */
 .btn:focus,
@@ -73,25 +193,6 @@ html {
 body {
     margin-bottom: 60px;
 }
-
-/* Стили для изображений на маленьких экранах (<768px) */
-@media (max-width: 767px) {
-    img {
-        max-width: 100%;
-    }
-    html {
-        font-size: 8px;
-    }
-}
-
-/* Стили для изображений на больших экранах (768px и более) */
-@media (min-width: 768px) {
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-}
-
 
 body {
     background-color: var(--background-color);
@@ -123,8 +224,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--content-border); /* Заменяем border на border-bottom */
-    height: 54px;
+    border-bottom: 1px solid var(--content-border);
     white-space: nowrap;
 }
 
@@ -133,7 +233,6 @@ header {
 #top-right ul {
     list-style-type: none;
     color: var(--button-text);
-
 }
 
 /* Стили для элементов списка в левом меню */
@@ -150,7 +249,7 @@ header {
     background-color: transparent;
     color: var(--button-text);
     text-align: left;
-    padding: 10px;
+    padding: 0.5rem 1rem;
     margin-top: 2px;
     border-radius: 5px;
     text-decoration: none;
@@ -163,13 +262,13 @@ header {
         transition: background-color 0.3s ease-in-out;
     }
 
-
 /* Стили для логотипа */
 #logo {
     display: flex;
     align-items: center;
     font-size: 160%;
     font-weight: bold;
+
 }
 
 /* Стили для изображения в левой части верхнего меню */
@@ -180,75 +279,64 @@ header {
 /* Стили для bottom-menu */
 #bottom-menu {
     display: flex;
+    margin-top: var(--margin-top-bottMenu);
 }
 
-
-.navbar > .container {
-    align-items: flex-start;
-    flex-wrap: nowrap;
-}
-
-@media (min-width: 100px){
+@media (min-width: 100px) {
     .navbar-expand-lg .navbar-nav {
         flex-direction: row;
     }
 }
 
-
 #bottom-right {
     background-color: var(--menu-background);
     border: 1px solid var(--content-border);
     border-radius: 10px;
-    padding: 15px;
-    min-width: 14.9%;
+    padding: var(--padding-custom);
+    width: var(--width-bottRight);
+    height: var(--height-bottRight);
 }
-
 #bottom-left {
-    min-width: 14.9%;
-    max-width: 15%;
+    margin-right: var(--margin-right-bottLeft);
 }
 
-@media (min-width: 100px) {
 
-    .col-md-6 {
-        flex: 0 0 auto;
-        width: 65%;
-        display: flex;
-        justify-content: center;
-    }
-
-
+/* Стили для списка в левом и правом меню */
+#bottom-left ul,
+#bottom-right ul {
+    color: var(--button-text);
 }
-    /* Стили для списка в левом и правом меню */
-    #bottom-left ul,
-    #bottom-right ul {
-        color: var(--button-text);
-    }
 
-    /* Стили для элементов списка в левом и правом меню */
-    #bottom-left li,
-    #bottom-right li {
-        margin-bottom: 2px;
-    }
+#bottom-right ul {
+    color: var(--button-text);
+    margin-top: var(--margin-top-bottom-ul);
+}
 
-    /* Стили для ссылок в левом и правом меню */
-    #bottom-right a,
-    #bottom-left a {
-        display: block;
-        background-color: transparent;
-        color: var(--button-text);
-        text-align: left;
-        border-radius: 5px;
-        text-decoration: none;
+/* Стили для элементов списка в левом и правом меню */
+#bottom-left li,
+#bottom-right li {
+    margin-bottom: 2px;
+}
+
+/* Стили для ссылок в левом и правом меню */
+#bottom-right a,
+#bottom-left a {
+    display: block;
+    background-color: transparent;
+    color: var(--button-text);
+    text-align: left;
+    border-radius: 5px;
+    padding: 3px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+    #bottom-right a:hover,
+    #bottom-left a:hover {
+        background-color: var(--button-background);
+        color: var(--button-text-hover);
         transition: background-color 0.3s ease-in-out;
     }
-
-        #bottom-right a:hover,
-        #bottom-left a:hover {
-            background-color: var(--button-background);
-            color: var(--button-text-hover);
-            transition: background-color 0.3s ease-in-out;
-        }
 
 /* Стили для центрального меню */
 #bottom-center {
@@ -256,19 +344,15 @@ header {
     display: flex;
     border: 1px solid var(--content-border);
     border-radius: 10px;
-    padding: 15px;
+    padding: var(--padding-bottCenter);
+    margin-right: var(--margin-right-bottCenter);
     color: var(--button-text);
-    min-height: 100px;
-    min-width: 69.9%;
-    max-width: 70%;
     text-align: center;
     margin-bottom: 10px;
     flex-direction: column;
 }
 
     #bottom-center img {
-        max-width: 100%;
-        max-height: 100%;
         object-fit: contain;
         border: 2px solid var(--content-border);
         margin-bottom: 10px;
@@ -291,8 +375,6 @@ header {
     }
 
         #bottom-center .image-container img {
-            max-width: 100%;
-            max-height: 100%;
             border-radius: 10px;
             position: relative;
             flex: 1;
@@ -301,11 +383,12 @@ header {
 
             #bottom-center .image-container img:only-child {
                 flex: 2;
-                max-width: 100%;
             }
 
-
-
+.divider {
+    border-bottom: 1px solid var(--content-border);
+    padding-bottom: 10px; /* Измените значение на ваше усмотрение */
+}
 
 /* Стили для переключателя "toggle" */
 .toggle {
@@ -335,7 +418,6 @@ header {
 }
 
 /* Добавьте другие стили, как вам нужно */
-
 
 /* Показываем подменю при наведении на элемент "nav-item" */
 .nav-item:hover .submenu {
@@ -372,7 +454,7 @@ header {
     font: inherit;
     cursor: pointer;
     text-decoration: underline;
-    color: blue; /* Цвет ссылки можно изменить на тот, который вам нравится */
+    color: blue;
 }
 
 .nav-link {
@@ -382,12 +464,14 @@ header {
     border-radius: 5px;
     text-decoration: none;
 }
+
     .nav-link:hover {
         color: var(--button-text-hover);
         text-decoration: none;
         border-radius: 5px;
         background-color: var(--button-background);
     }
+
 
 
 .service-button a {
@@ -407,7 +491,7 @@ header {
         transition: background-color 0.3s ease-in-out;
     }
 
-#content-window    {
+#content-window {
     display: flex;
     border-radius: 10px;
     padding: 15px;
@@ -420,6 +504,56 @@ header {
     flex-direction: column;
 }
 
+#content-service {
+    display: flex;
+    border-radius: 10px;
+    padding: 15px;
+    border: 1px solid var(--content-border);
+    color: var(--button-text);
+    min-height: 100px;
+    min-width: 74%;
+    max-width: 75%;
+    text-align: center;
+    margin-bottom: 10px;
+    flex-direction: column;
+}
+
+    #content-service img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    #content-service p {
+        font-family: Helvetica;
+        margin-top: 10px;
+        text-align: left;
+        max-width: 100%;
+    }
+
+    #content-service .image-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+        #content-service .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            position: relative;
+            flex: 1;
+            margin: 2px;
+        }
+
+            #content-service .image-container img:only-child {
+                flex: 2;
+                max-width: 100%;
+            }
 
 .pdf-buttons {
     display: flex;
