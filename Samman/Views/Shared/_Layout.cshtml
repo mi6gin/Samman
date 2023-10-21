@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Manchkin</title>
+    <title>@ViewData["Title"] - Samman</title>
 
     <!-- Подключение стилей -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Manchkin.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Samman.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
@@ -20,7 +20,7 @@
         }
 
     </style>
-    <header>
+    <header id="widthFor">
         <nav id="top-menu" class="navbar navbar-expand-lg ">
             <div class="container">
                 <!-- Левая часть шапки с логотипом и названием сайта -->
@@ -30,7 +30,8 @@
                         <span style="font-weight: bold;">Самман</span>
                     </a>
                 </div>
-
+                <div class="col-md-6">
+                </div>
                 <!-- Правая часть шапки с кнопкой "Настройки" и "Войти в аккаунт" -->
                 <div id="top-right" class="d-flex align-items-center">
                     <button class="navbar-toggler" type="button">

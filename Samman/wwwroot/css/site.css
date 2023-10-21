@@ -10,6 +10,7 @@
     --padding-custom: 15px;
     --margin-top-bottom-ul: 0px;
     --padding-bottCenter:15px;
+    --margin-left-topLeft:-30%;
 }
     /* Основные стили для светлой темы */
     .light-theme {
@@ -93,6 +94,7 @@ html {
     :root {
         /*Определение для центральных нижних меню*/
         --margin-top-bottMenu: 1%;
+        --width-col-6: 30%;
     }
 }
 @media (max-width: 767px) {
@@ -173,6 +175,9 @@ html {
     flex-wrap: nowrap;
     justify-content: center;
 }
+
+
+
 
 
 /* Общие стили для фокусированных элементов */
