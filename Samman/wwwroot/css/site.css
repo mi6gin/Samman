@@ -2,15 +2,17 @@
 :root {
     /*Определение для центральных нижних меню*/
     --margin-top-bottMenu: 100%;
-    --width-col-6: 45%;
+    --width-col-6: 35%;
+    --width-col-7: 54%;
     --margin-right-bottCenter: 5%;
     --margin-right-bottLeft: 5%;
     --width-bottRight: 25%;
     --height-bottRight: 5%;
     --padding-custom: 15px;
     --margin-top-bottom-ul: 0px;
-    --padding-bottCenter:15px;
-    --margin-left-topLeft:-30%;
+    --padding-bottCenter: 15px;
+    --margin-left-topLeft: -30%;
+    --height-top-menu: 50px;
 }
     /* Основные стили для светлой темы */
     .light-theme {
@@ -36,7 +38,7 @@
     --button-text-hover: white;
     --button-text-submenu: #444546;
     --link-color: #82d5e6;
-    --menu-background: #363738;
+    --menu-background: #2a2a2b;
     --menu-hover-background: #444546;
     --content-background: #363738;
     --content-border: #545454;
@@ -63,30 +65,36 @@ html {
 
 
 /* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 1400px) {
+    :root {
+        /*Определение для центральных нижних меню*/
+        --width-col-7: 50%;
+    }
+}
+@media (max-width: 1200px) {
+    :root {
+        /*Определение для центральных нижних меню*/
+        --width-col-7: 46%;
+    }
+}
 @media (max-width: 1000px) {
     html {
-        font-size: 100%;
+        font-size: 70%;
         transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
     }
-
-    img {
-        max-width: 100%;
-        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
-    }
-
     :root {
         /*Определение для центральных нижних меню*/
         --margin-top-bottMenu: 1%;
-        --margin-top-bottom-ul: -50px;
-
+        --margin-top-bottom-ul: -5px;
+        --width-col-7: 50%;
+    }
+}
+@media (max-width: 995px) {
+    :root {
+        --width-col-7: 38%;
     }
 }
 @media (min-width: 768px) {
-    html {
-        font-size: 100%;
-        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
-    }
-
     img {
         max-width: 100%;
         transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
@@ -94,12 +102,13 @@ html {
     :root {
         /*Определение для центральных нижних меню*/
         --margin-top-bottMenu: 1%;
-        --width-col-6: 30%;
+        --width-col-6: 45%;
+
     }
 }
 @media (max-width: 767px) {
     html {
-        font-size: 25%;
+        font-size: 75%;
         transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
     }
 
@@ -109,14 +118,15 @@ html {
     }
     :root {
         /*Определение для центральных нижних меню*/
-        --margin-top-bottMenu: -3%;
-        --width-col-6: 30%;
-        --margin-right-bottCenter: 2%;
+        --margin-top-bottMenu: 1%;
+        --width-col-6: 50%;
+        --margin-right-bottCenter: 3%;
         --margin-right-bottLeft: 1%;
-        --width-bottRight: 15%;
+        --width-bottRight: 25%;
         --padding-custom: 2px;
         --margin-top-bottom-ul: -10px;
         --padding-bottCenter: 10px;
+        --width-col-7: 25%;
     }
 
 }
@@ -165,6 +175,12 @@ html {
 
 .col-md-6 {
     width: var(--width-col-6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.col-md-7 {
+    width: var(--width-col-7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -231,6 +247,7 @@ header {
     align-items: center;
     border-bottom: 1px solid var(--content-border);
     white-space: nowrap;
+    height: var(--height-top-menu);
 }
 
 /* Стили для списка в левом меню */
