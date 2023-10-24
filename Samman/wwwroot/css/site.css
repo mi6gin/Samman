@@ -161,6 +161,18 @@ img {
         --width-img-logo: 20px;
     }
 }
+@media (max-width: 769.9px) {
+    html {
+        font-size: 68%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 45%;
+        --width-img-logo: 20px;
+    }
+}
 @media (max-width: 768px) {
     html {
         font-size: 68%;
