@@ -1,9 +1,9 @@
 ﻿/* Определение CSS переменных */
 :root {
     /*Определение для центральных нижних меню*/
-    --margin-top-bottMenu: 100%;
-    --width-col-6: 35%;
-    --width-col-7: 54%;
+    --margin-top-bottMenu: -0.1%;
+    --width-col-6: 45%;
+    --width-col-7: 52%;
     --margin-right-bottCenter: 5%;
     --margin-right-bottLeft: 5%;
     --width-bottRight: 25%;
@@ -13,6 +13,7 @@
     --padding-bottCenter: 15px;
     --margin-left-topLeft: -30%;
     --height-top-menu: 50px;
+    --width-img-logo: 30px;
 }
     /* Основные стили для светлой темы */
     .light-theme {
@@ -47,20 +48,15 @@
 
 /* Общие стили для всей страницы */
 html {
-    font-size: 14px;
+    font-size: 100%;
+    transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
 }
 
-/* Стили для кнопки с идентификатором "IndexButton" */
-#IndexButton {
-    background-color: var(--button-background);
-    color: var(--button-text);
+img {
+    max-width: 100%;
+    transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
 }
 
-    #IndexButton:hover {
-        background-color: var(--text-color);
-        color: var(--button-text);
-        transition: background-color 0.3s ease-in-out;
-    }
 
 
 
@@ -68,88 +64,137 @@ html {
 @media (max-width: 1400px) {
     :root {
         /*Определение для центральных нижних меню*/
-        --width-col-7: 50%;
+        --width-col-6: 50%;
+        --width-col-7: 60%;
+    }
+
+    html {
+        font-size: 85%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
     }
 }
-@media (max-width: 1200px) {
+@media (max-width: 1399px) {
     :root {
         /*Определение для центральных нижних меню*/
-        --width-col-7: 46%;
+        --width-col-6: 50%;
+        --width-col-7: 56%;
+    }
+    html {
+        font-size: 85%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+}
+/* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 1200px) {
+    :root {
+        --width-col-6: 58%;
+        --width-col-7: 59%;
+    }
+}
+/* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 1001px) {
+    html {
+        font-size: 85%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 37%;
     }
 }
 @media (max-width: 1000px) {
     html {
-        font-size: 70%;
-        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
-    }
-    :root {
-        /*Определение для центральных нижних меню*/
-        --margin-top-bottMenu: 1%;
-        --margin-top-bottom-ul: -5px;
-        --width-col-7: 50%;
-    }
-}
-@media (max-width: 995px) {
-    :root {
-        --width-col-7: 38%;
-    }
-}
-@media (min-width: 768px) {
-    img {
-        max-width: 100%;
-        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
-    }
-    :root {
-        /*Определение для центральных нижних меню*/
-        --margin-top-bottMenu: 1%;
-        --width-col-6: 45%;
-
-    }
-}
-@media (max-width: 767px) {
-    html {
-        font-size: 75%;
+        font-size: 85%;
         transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
     }
 
-    img {
-        max-width: 100%;
-        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
-    }
     :root {
-        /*Определение для центральных нижних меню*/
-        --margin-top-bottMenu: 1%;
         --width-col-6: 50%;
-        --margin-right-bottCenter: 3%;
-        --margin-right-bottLeft: 1%;
-        --width-bottRight: 25%;
-        --padding-custom: 2px;
-        --margin-top-bottom-ul: -10px;
-        --padding-bottCenter: 10px;
-        --width-col-7: 25%;
+        --width-col-7: 51%;
+    }
+}
+/* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 996px) {
+    html {
+        font-size: 85%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
     }
 
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 52%;
+    }
 }
-
 /* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 994px) {
+    html {
+        font-size: 85%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 45%;
+    }
+}
+@media (max-width: 993px) {
+    html {
+        font-size: 80%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 39%;
+    }
+}
+/* Медиа-запрос для увеличения размера шрифта на больших экранах */
+@media (max-width: 770px) {
+    html {
+        font-size: 68%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 33%;
+        --width-img-logo: 20px;
+    }
+}
+@media (max-width: 768px) {
+    html {
+        font-size: 68%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 44%;
+        --width-img-logo: 20px;
+    }
+}
+@media (max-width: 767.9px) {
+    html {
+        font-size: 68%;
+        transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
+    }
+
+    :root {
+        --width-col-6: 50%;
+        --width-col-7: 30%;
+        --width-img-logo: 20px;
+    }
+}
 @media (max-width: 600px) {
     html {
-        font-size: 12%;
+        font-size: 55%;
         transition: font-size 0.3s; /* Добавлен переход для размера шрифта */
     }
 
-    img {
-        max-width: 100%;
-        transition: max-width 0.3s; /* Добавлен переход для максимальной ширины изображений */
-
-    }
     :root {
-        /*Определение для центральных нижних меню*/
-        --margin-top-bottMenu: -5%;
-        --width-col-6: 10%;
-        --margin-top-bottom-ul: -10px;
-        --width-bottRight: 9%;
-        --padding-bottCenter: 5px;
+        --width-col-6: 50%;
+        --width-col-7: 40%;
+        --width-img-logo: 20px;
     }
 }
 
@@ -171,6 +216,19 @@ html {
         --width-col-6: 20%;
     }
 }
+
+
+/* Стили для кнопки с идентификатором "IndexButton" */
+#IndexButton {
+    background-color: var(--button-background);
+    color: var(--button-text);
+}
+
+    #IndexButton:hover {
+        background-color: var(--text-color);
+        color: var(--button-text);
+        transition: background-color 0.3s ease-in-out;
+    }
 
 
 .col-md-6 {
@@ -205,11 +263,6 @@ html {
     box-shadow: 0 0 0 0.1rem var(--menu-background), 0 0 0 0.25rem #258cfb;
 }
 
-/* Стили для всей страницы */
-html {
-    position: relative;
-    min-height: 100%;
-}
 
 body {
     margin-bottom: 60px;
@@ -295,7 +348,9 @@ header {
 
 /* Стили для изображения в левой части верхнего меню */
 #top-left img {
-    border-radius: 35%;
+    border-radius: 25%;
+    margin-right: -5%;
+    width: var(--width-img-logo);
 }
 
 /* Стили для bottom-menu */
