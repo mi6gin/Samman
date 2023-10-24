@@ -169,7 +169,7 @@ img {
 
     :root {
         --width-col-6: 50%;
-        --width-col-7: 44%;
+        --width-col-7: 45%;
         --width-img-logo: 20px;
     }
 }
@@ -181,7 +181,7 @@ img {
 
     :root {
         --width-col-6: 50%;
-        --width-col-7: 30%;
+        --width-col-7: 34%;
         --width-img-logo: 20px;
     }
 }
